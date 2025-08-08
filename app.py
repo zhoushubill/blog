@@ -55,7 +55,7 @@ def get_bitable_records_cached():
 def extract_text(field):
     if isinstance(field, list):
         # 飞书富文本字段通常为 [{'text': '内容', ...}, ...]
-        return ''.join([item.get('text', '') for item in field if isinstance(item, dict)])
+        return ''.join([item.get('text', '') for item in field if isinstance(item, dict) and 'text' in item])
     elif isinstance(field, dict):
         return field.get('text', '')
     elif field is None:
@@ -70,18 +70,20 @@ def index():
         articles = []
         for r in records:
             fields = r.get('fields', {})
+            full_summary = extract_text(fields.get('概要内容输出', ''))
             articles.append({
                 'id': r.get('record_id'),
                 'title': extract_text(fields.get('标题', '')),
                 'quote': extract_text(fields.get('金句输出', '')),
                 'comment': extract_text(fields.get('黄叔点评', '')),
-                'summary': extract_text(fields.get('概要内容输出', ''))[:100],
-                'full_summary': extract_text(fields.get('概要内容输出', '')),
+                'summary': full_summary[:100],
+                'full_summary': full_summary,
                 'origin_url': extract_text(fields.get('链接', '')),
             })
         return render_template('index.html', articles=articles)
     except Exception as e:
-        return f"数据获取失败: {e}", 500
+        app.logger.error(f"数据获取失败: {e}")
+        return render_template('error.html', message="获取文章列表失败，请稍后再试"), 500
 
 # 详情页
 @app.route('/detail/<record_id>')
@@ -105,7 +107,8 @@ def detail(record_id):
             abort(404)
         return render_template('detail.html', article=article)
     except Exception as e:
-        return f"数据获取失败: {e}", 500
+        app.logger.error(f"数据获取失败: {e}")
+        return render_template('error.html', message="获取文章列表失败，请稍后再试"), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

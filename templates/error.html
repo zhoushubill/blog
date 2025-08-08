@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}错误 - 我的博客{% endblock %}
+{% block content %}
+<div class="error-container">
+    <h2>出错了</h2>
+    <p class="error-message">{{ message }}</p>
+    <a href="/" class="back-link">返回首页</a>
+</div>
+{% endblock %}

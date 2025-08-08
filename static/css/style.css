@@ -5,6 +5,35 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f8fa;
+    z-index: 1000;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(229, 57, 53, 0.2);
+    border-top: 5px solid #e53935;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 header {
     background: #fff;
     border-bottom: 2px solid #e53935;
@@ -60,34 +89,19 @@ main {
 .article-title a:hover {
     color: #b71c1c;
 }
-.quote {
-    color: #e53935;
-    font-size: 1.1rem;
-    margin: 8px 0 4px 0;
-    font-weight: 500;
-}
+/* 移除未使用的 .quote 类，统一使用 .quote-box */
 .comment {
     color: #888;
     margin: 4px 0 12px 0;
     font-size: 1rem;
 }
-.summary-box {
-    background: #fff4f2;
-    color: #b71c1c;
-    border-radius: 10px;
-    padding: 14px 18px;
-    font-size: 1.05rem;
-    margin-top: 10px;
-    line-height: 1.7;
-    box-shadow: 0 1px 4px rgba(229,57,53,0.06);
-    border-left: 4px solid #e53935;
-}
+/* 移除未使用的 .summary-box 类，统一使用 .summary-text */
 .article-detail h2 {
     color: #e53935;
     font-size: 2rem;
     margin-bottom: 12px;
 }
-.article-detail .quote {
+.article-detail .quote-box {
     font-size: 1.2rem;
     margin-bottom: 8px;
 }
@@ -112,6 +126,11 @@ main {
     font-size: 1.05rem;
     margin: 8px 0 10px 0;
     line-height: 1.7;
+    background: #fff4f2;
+    border-radius: 10px;
+    padding: 14px 18px;
+    box-shadow: 0 1px 4px rgba(229,57,53,0.06);
+    border-left: 4px solid #e53935;
 }
 .article-detail .content {
     color: #222;
@@ -139,6 +158,29 @@ footer {
     color: #aaa;
     font-size: 0.95rem;
     margin: 32px 0 12px 0;
+}
+
+.error-container {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(229,57,53,0.08), 0 1.5px 6px rgba(0,0,0,0.04);
+    padding: 32px 28px;
+    text-align: center;
+    margin: 40px auto;
+    max-width: 600px;
+}
+
+.error-container h2 {
+    color: #e53935;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
 }
 .card-actions {
     display: flex;
@@ -184,16 +226,35 @@ footer {
 }
 @media (max-width: 600px) {
     main {
-        padding: 0 2vw;
+        padding: 0 12px;
+        margin-top: 20px;
     }
     .article-card {
-        padding: 18px 8px 14px 8px;
+        padding: 20px 16px 16px 16px;
+        margin-bottom: 24px;
     }
     .article-title {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
-    .summary-box {
-        font-size: 0.98rem;
-        padding: 10px 8px;
+    .summary-text {
+        font-size: 1rem;
+        padding: 12px 14px;
+        line-height: 1.6;
+    }
+    .quote-box {
+        font-size: 1.05rem;
+        padding: 10px 14px;
+    }
+    .card-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .read-more-btn, .origin-btn {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .site-title {
+        font-size: 2rem;
     }
 }
