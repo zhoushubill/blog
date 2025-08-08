@@ -1,0 +1,199 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+    background: #f7f8fa;
+    color: #222;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background: #fff;
+    border-bottom: 2px solid #e53935;
+    padding: 32px 0 16px 0;
+    text-align: center;
+}
+.site-title {
+    color: #e53935;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0;
+}
+main {
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    background: transparent;
+    padding: 0 16px;
+}
+.article-list {
+    column-count: 2;
+    column-gap: 40px;
+    margin-bottom: 32px;
+    padding-top: 8px;
+}
+.article-card {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 40px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(229,57,53,0.08), 0 1.5px 6px rgba(0,0,0,0.04);
+    padding: 32px 28px 24px 28px;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+.article-card:hover {
+    box-shadow: 0 8px 32px rgba(229,57,53,0.16), 0 3px 12px rgba(0,0,0,0.08);
+    transform: translateY(-4px) scale(1.01);
+}
+.article-title {
+    margin: 0 0 10px 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+.article-title a {
+    color: #e53935;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.article-title a:hover {
+    color: #b71c1c;
+}
+.quote {
+    color: #e53935;
+    font-size: 1.1rem;
+    margin: 8px 0 4px 0;
+    font-weight: 500;
+}
+.comment {
+    color: #888;
+    margin: 4px 0 12px 0;
+    font-size: 1rem;
+}
+.summary-box {
+    background: #fff4f2;
+    color: #b71c1c;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 1.05rem;
+    margin-top: 10px;
+    line-height: 1.7;
+    box-shadow: 0 1px 4px rgba(229,57,53,0.06);
+    border-left: 4px solid #e53935;
+}
+.article-detail h2 {
+    color: #e53935;
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+.article-detail .quote {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+.article-detail .comment {
+    color: #888;
+    margin-bottom: 16px;
+}
+.quote-box {
+    background: #fff4f2;
+    color: #e53935;
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 1.13rem;
+    margin: 12px 0 14px 0;
+    font-weight: 600;
+    line-height: 1.7;
+    box-shadow: 0 1px 4px rgba(229,57,53,0.06);
+    border-left: 4px solid #e53935;
+}
+.summary-text {
+    color: #333;
+    font-size: 1.05rem;
+    margin: 8px 0 10px 0;
+    line-height: 1.7;
+}
+.article-detail .content {
+    color: #222;
+    font-size: 1.13rem;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    margin-top: 8px;
+}
+.back-link {
+    display: inline-block;
+    margin-top: 16px;
+    color: #e53935;
+    text-decoration: none;
+    border: 1px solid #e53935;
+    border-radius: 6px;
+    padding: 6px 18px;
+    transition: background 0.2s, color 0.2s;
+}
+.back-link:hover {
+    background: #e53935;
+    color: #fff;
+}
+footer {
+    text-align: center;
+    color: #aaa;
+    font-size: 0.95rem;
+    margin: 32px 0 12px 0;
+}
+.card-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 18px;
+}
+.read-more-btn, .origin-btn {
+    display: inline-block;
+    padding: 7px 20px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(229,57,53,0.06);
+}
+.read-more-btn {
+    background: #e53935;
+    color: #fff;
+    border: none;
+}
+.read-more-btn:hover {
+    background: #b71c1c;
+    color: #fff;
+}
+.origin-btn {
+    background: #fff;
+    color: #e53935;
+    border: 1.5px solid #e53935;
+}
+.origin-btn:hover {
+    background: #e53935;
+    color: #fff;
+}
+@media (max-width: 900px) {
+    .article-list {
+        column-count: 1;
+        column-gap: 0;
+    }
+    .article-card {
+        margin-bottom: 28px;
+    }
+}
+@media (max-width: 600px) {
+    main {
+        padding: 0 2vw;
+    }
+    .article-card {
+        padding: 18px 8px 14px 8px;
+    }
+    .article-title {
+        font-size: 1.2rem;
+    }
+    .summary-box {
+        font-size: 0.98rem;
+        padding: 10px 8px;
+    }
+}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}首页 - 我的博客{% endblock %}
+{% block content %}
+<div class="article-list">
+    {% for article in articles %}
+    <div class="article-card">
+        <h2 class="article-title"><a href="/detail/{{ article.id }}" target="_blank">{{ article.title }}</a></h2>
+        <div class="quote-box">{{ article.quote }}</div>
+        <div class="summary-text">{{ article.summary }}{% if article.full_summary|length > 100 %}...{% endif %}</div>
+        <p class="comment">{{ article.comment }}</p>
+        <div class="card-actions">
+            <a class="read-more-btn" href="/detail/{{ article.id }}" target="_blank">阅读更多</a>
+            {% if article.origin_url %}
+            <a class="origin-btn" href="{{ article.origin_url }}" target="_blank">查看原文</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

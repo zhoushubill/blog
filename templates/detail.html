@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}{{ article.title }} - 我的博客{% endblock %}
+{% block content %}
+<article class="article-detail">
+    <h2>{{ article.title }}</h2>
+    <div class="quote-box">{{ article.quote }}</div>
+    <div class="content">{{ article.content }}</div>
+    <p class="comment">{{ article.comment }}</p>
+    {% if article.origin_url %}
+    <a class="origin-btn" href="{{ article.origin_url }}" target="_blank">查看原文</a>
+    {% endif %}
+</article>
+<a href="/" class="back-link">返回首页</a>
+{% endblock %}
